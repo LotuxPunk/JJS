@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1065486304266",
+    "firebase_url": "https://le-journal-de-jemeppe.firebaseio.com",
+    "project_id": "le-journal-de-jemeppe",
+    "storage_bucket": "le-journal-de-jemeppe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1065486304266:android:507763e475e7590d",
+        "android_client_info": {
+          "package_name": "be.lejournaldejemeppe.jjswebview"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1065486304266-j9nvnf5rbkc3ppi70u6mjr1j8l2qgldp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCnNt58HBO6t-vD3jEZseL0kO1qevgnDk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
