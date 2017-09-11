@@ -11,12 +11,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+
+import com.google.firebase.messaging.RemoteMessage;
 
 import be.lejournaldejemeppe.jjswebview.R;
 import be.lejournaldejemeppe.jjswebview.Others.ViewClient;
@@ -165,5 +168,13 @@ public class JJSMain extends AppCompatActivity implements NavigationView.OnNavig
 
     public void setSwipeFalse(){
         mSwipeRefreshLayout.setRefreshing(false);
+    }
+
+    public final void notificationMaker(RemoteMessage remoteMessage){
+        NotificationCompat.Builder mBuilder =
+                (NotificationCompat.Builder) new NotificationCompat.Builder(this)
+                .setSmallIcon(R.mipmap.ic_jjs)
+                .setContentTitle(remoteMessage.getNotification().getTitle())
+                .setContentText(remoteMessage.getNotification().getBody());
     }
 }
