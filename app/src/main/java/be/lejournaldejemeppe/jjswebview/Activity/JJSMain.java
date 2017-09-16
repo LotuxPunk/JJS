@@ -11,6 +11,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,8 +22,11 @@ import android.webkit.WebView;
 import be.lejournaldejemeppe.jjswebview.R;
 import be.lejournaldejemeppe.jjswebview.Others.ViewClient;
 
+import static android.content.Context.CONNECTIVITY_SERVICE;
+
 public class JJSMain extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private WebView mWebView;
+    static WebView sWebview;
     private SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Override
@@ -34,13 +38,19 @@ public class JJSMain extends AppCompatActivity implements NavigationView.OnNavig
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.activity_main_swipe_refresh_layout);
         //Get WebView
         mWebView = (WebView)findViewById(R.id.activity_main_webview);
+        sWebview = mWebView;
 
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         if ( !isNetworkAvailable() ) { // loading offline
             mWebView.loadUrl("file:///android_asset/index.html");
         } else {
-            mWebView.loadUrl("http://lejournaldejemeppe.be");
+            if (getIntent().getStringExtra("url") != null){
+                mWebView.loadUrl(getIntent().getStringExtra("url"));
+            }
+            else{
+                mWebView.loadUrl("http://lejournaldejemeppe.be");
+            }
         }
         mWebView.setWebViewClient(new ViewClient(){
             //Desactive la jolie boucle après chargement
@@ -166,4 +176,5 @@ public class JJSMain extends AppCompatActivity implements NavigationView.OnNavig
     public void setSwipeFalse(){
         mSwipeRefreshLayout.setRefreshing(false);
     }
+
 }
