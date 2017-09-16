@@ -22,8 +22,11 @@ import android.webkit.WebView;
 import be.lejournaldejemeppe.jjswebview.R;
 import be.lejournaldejemeppe.jjswebview.Others.ViewClient;
 
+import static android.content.Context.CONNECTIVITY_SERVICE;
+
 public class JJSMain extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private WebView mWebView;
+    static WebView sWebview;
     private SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Override
@@ -35,13 +38,19 @@ public class JJSMain extends AppCompatActivity implements NavigationView.OnNavig
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.activity_main_swipe_refresh_layout);
         //Get WebView
         mWebView = (WebView)findViewById(R.id.activity_main_webview);
+        sWebview = mWebView;
 
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         if ( !isNetworkAvailable() ) { // loading offline
             mWebView.loadUrl("file:///android_asset/index.html");
         } else {
-            mWebView.loadUrl("http://lejournaldejemeppe.be");
+            if (getIntent().getStringExtra("url") != null){
+                mWebView.loadUrl(getIntent().getStringExtra("url"));
+            }
+            else{
+                mWebView.loadUrl("http://lejournaldejemeppe.be");
+            }
         }
         mWebView.setWebViewClient(new ViewClient(){
             //Desactive la jolie boucle après chargement
@@ -168,11 +177,4 @@ public class JJSMain extends AppCompatActivity implements NavigationView.OnNavig
         mSwipeRefreshLayout.setRefreshing(false);
     }
 
-    /*public final void notificationMaker(RemoteMessage remoteMessage){
-        NotificationCompat.Builder mBuilder =
-                (NotificationCompat.Builder) new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.mipmap.ic_jjs)
-                        .setContentTitle(remoteMessage.getNotification().getTitle())
-                        .setContentText(remoteMessage.getNotification().getBody());
-    }*/
 }
