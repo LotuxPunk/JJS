@@ -19,8 +19,6 @@ import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-import com.google.firebase.messaging.RemoteMessage;
-
 import be.lejournaldejemeppe.jjswebview.R;
 import be.lejournaldejemeppe.jjswebview.Others.ViewClient;
 
@@ -170,11 +168,11 @@ public class JJSMain extends AppCompatActivity implements NavigationView.OnNavig
         mSwipeRefreshLayout.setRefreshing(false);
     }
 
-    public final void notificationMaker(RemoteMessage remoteMessage){
+    /*public final void notificationMaker(RemoteMessage remoteMessage){
         NotificationCompat.Builder mBuilder =
                 (NotificationCompat.Builder) new NotificationCompat.Builder(this)
-                .setSmallIcon(R.mipmap.ic_jjs)
-                .setContentTitle(remoteMessage.getNotification().getTitle())
-                .setContentText(remoteMessage.getNotification().getBody());
-    }
+                        .setSmallIcon(R.mipmap.ic_jjs)
+                        .setContentTitle(remoteMessage.getNotification().getTitle())
+                        .setContentText(remoteMessage.getNotification().getBody());
+    }*/
 }
