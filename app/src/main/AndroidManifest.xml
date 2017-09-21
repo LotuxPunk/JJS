@@ -13,17 +13,24 @@
         android:label="Le journal de Jemeppe-s/S"
         android:roundIcon="@mipmap/ic_jjs"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-
-        <activity
-            android:name=".SplashScreen"
-            android:screenOrientation="portrait">
+        android:theme="@style/AppTheme"
+        android:name=".Others.JjsApp">
+        <activity android:name="be.lejournaldejemeppe.jjswebview.Activity.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- Main activity -->
-        <activity android:name=".JssMain" />
+        <activity
+            android:name="be.lejournaldejemeppe.jjswebview.Activity.JJSMain"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <meta-data android:name="com.onesignal.NotificationOpened.DEFAULT" android:value="DISABLE" />
     </application>
+
 </manifest>
