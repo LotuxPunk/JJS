@@ -7,8 +7,8 @@ android {
         applicationId "be.lejournaldejemeppe.jjswebview"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 41
-        versionName "2.2.1"
+        versionCode 42
+        versionName "2.2.2"
         manifestPlaceholders = [onesignal_app_id: "8f2b8faf-0cba-40a4-8b66-5f46b04a3d7f",
                                 // Project number pulled from dashboard, local value is ignored.
                                 onesignal_google_project_number: "REMOTE"]
